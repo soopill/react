@@ -13,7 +13,7 @@ export default function App({ Component }) {
         입니다,======================
       </div>
       <ApolloProvider client={client}>
-        <Component />;
+        <Component />
       </ApolloProvider>
       <div>
         =======================여기는 app.js 컴포넌트
