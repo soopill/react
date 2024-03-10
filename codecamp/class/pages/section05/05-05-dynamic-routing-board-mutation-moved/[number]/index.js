@@ -16,13 +16,13 @@ export default function StaticRoutingMovedPage() {
 
   const { data } = useQuery(FETCH_BOARD, {
     variables: {
-      number: Number(router.query.qqq),
+      number: Number(router.query.number),
     },
   });
 
   return (
     <div>
-      <div>{router.query.qqq}번 완료되었습니다.</div>
+      <div>{router.query.number}번 완료되었습니다.</div>
       <div>작성자: {data?.fetchBoard?.writer}</div>
       <div>제목: {data?.fetchBoard?.title}</div>
       <div>내용: {data?.fetchBoard?.contents}</div>
