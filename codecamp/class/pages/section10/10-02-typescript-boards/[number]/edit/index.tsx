@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import { gql, useQuery } from "@apollo/client";
-import { useRouter } from "next/router";
 import BoardWrite from "../../../../../src/components/units/board/10-write/BoardWrite.cotainer";
 const FETCH_BOARD = gql`
   query fecthBoard($number: Int) {

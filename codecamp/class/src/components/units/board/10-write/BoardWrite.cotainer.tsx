@@ -1,12 +1,11 @@
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
-import { 나의그래프큐엘셋팅, UPDATE_BOARD } from "./BoardWrite.queries.jtsx";
+import { useState, ChangeEvent } from "react";
+import { 나의그래프큐엘셋팅, UPDATE_BOARD } from "./BoardWrite.queries";
 import { useRouter } from "next/router";
+import BoardWriteUI from "./BoardWrite.presenter";
+import { IBoardWriteProps, IMyvariables } from "./BoardWrite.types";
 
-interface IBoardWriteProps {
-  isEdit: boolean;
-  data?: any; //추후에 바꿈
-}
+
 
 export default function BoardWrite(props: IBoardWriteProps) {
   const router = useRouter();
@@ -29,13 +28,8 @@ export default function BoardWrite(props: IBoardWriteProps) {
     console.log(result);
     router.push(`/10-02-typescript-boards/${result.data.createBoard.number}`);
   };
-  const onClickUpdete = async () => {
-    interface IMyvariables {
-      number: number;
-      writer?: string;
-      title?: string;
-      contents?: string;
-    }
+  const onClickUpdate = async () => {
+    
     const myvariables: IMyvariables = {
       number: Number(router.query.number),
     };
@@ -54,29 +48,29 @@ export default function BoardWrite(props: IBoardWriteProps) {
       variables: myvariables,
     });
     router.push(
-      `/setion10/10-02-typescript-boards/${result.data.updeteBoard.number}`
+      `/setion10/10-02-typescript-boards/${result.data.updateBoard.number}`
     );
   };
 
-  const onChangeWriter = (event) => {
-    setWriter = event.target.value;
+  const onChangeWriter = (event: ChangeEvent<HTMLInputElement>) => {
+    setWriter(event.target.value);
   };
-  const onChangeTitle = (event) => {
-    setTitle = event.target.value;
+  const onChangeTitle = (event: ChangeEvent<HTMLInputElement>) => {
+    setTitle(event.target.value);
   };
-  const onChangeContents = (event) => {
-    setContents = event.target.value;
+  const onChangeContents = (event: ChangeEvent<HTMLInputElement>) => {
+    setContents(event.target.value);
   };
-}
 
-return (
-  <BoardWriteUI
-    onClickSubmit={onClickSubmit}
-    onClickUpdete={onClickUpdete}
-    onChangeWriter={onChangeWriter}
-    onChangeTitle={onChangeTitle}
-    onChangeContents={onChangeContents}
-    isEdit={props.isEdit}
-    data={props.data}
-  />
-);
+  return (
+    <BoardWriteUI
+      onClickSubmit={onClickSubmit}
+      onClickUpdate={onClickUpdate}
+      onChangeWriter={onChangeWriter}
+      onChangeTitle={onChangeTitle}
+      onChangeContents={onChangeContents}
+      isEdit={props.isEdit}
+      data={props.data}
+    />
+  );
+}
