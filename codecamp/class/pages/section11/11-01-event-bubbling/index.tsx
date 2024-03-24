@@ -1,4 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
+import { MouseEvent } from "react";
 
 const FETCH_BOARDS = gql`
   query {
@@ -21,8 +22,8 @@ export default function StaticRoutingMovedPage() {
   //     padding: "0px",
   //   }; 원래는 이렇게 해서 변수로 넣으면 됨
 
-  const onClickAlert = (event) => {
-    alert("클릭 div");
+  const onClickAlert = (event: MouseEvent<HTMLDivElement>) => {
+    alert(event.currentTarget.id + "클릭");
   };
 
   return (
