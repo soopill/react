@@ -55,7 +55,7 @@ export default function StaticRoutingMovedPage(): JSX.Element {
   //   };
 
   const onClickPrevPage = (): void => {
-    if (startPage >= 1) {
+    if (startPage > 1) {
       setStartPage(startPage - 10);
       void refetch({ page: startPage - 10 });
     }

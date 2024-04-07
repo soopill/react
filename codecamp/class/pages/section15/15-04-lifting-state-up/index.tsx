@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Child1 from "../../../src/components/units/15-lifting-state-up/child1";
-import Child2 from "../../../src/components/units/15-lifting-state-up/child2";
+import Child1 from "../../../src/components/units/15-lifting-state-up/Child1";
+import Child2 from "../../../src/components/units/15-lifting-state-up/Child2";
 
 export default function CounterLetDocumentPage(): JSX.Element {
   const [count, setCount] = useState(0);
